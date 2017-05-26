@@ -36,7 +36,17 @@ mv others/layout ../android/app/src/main/res/
 mv others/drawable-xxhdpi ../android/app/src/main/res/
 mv others/drawable-xhdpi ../android/app/src/main/res/
 mv others/LaunchImage.launchimage ../ios/$1/Images.xcassets/
+sed  's/@TestProject/$1/g'  /others/AppDelegate.m > /others/AppDelegate.m.tmp
+mv /others/AppDelegate.m.tmp /others/AppDelegate.m
 mv others/AppDelegate.m ../ios/$1/
+
+sed  's/@TestProject/$1/g'  /others/MainActivity.java > /others/MainActivity.java.tmp
+mv /others/MainActivity.java.tmp /others/MainActivity.java
 projectName=`echo $1 | tr A-Z a-z `
 mv others/MainActivity.java ../android/app/src/main/java/com/$projectName/
 rm -rf others
+
+sed  's/minifyEnabled enableProguardInReleaseBuilds/minifyEnabled true/g'  ../android/app/build.gradle > ../android/app/build.gradle.tmp
+mv../android/app/build.gradle.tmp ../android/app/build.gradle
+
+
