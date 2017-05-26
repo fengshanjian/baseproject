@@ -1,0 +1,68 @@
+# @Author: smartrabbit
+# @Date:   2017-05-25T10:04:46+08:00
+# @Filename: .eslintrc
+# @Last modified by:   smartrabbit
+# @Last modified time: 2017-05-26T10:01:41+08:00
+
+
+{
+ # 使用 AirBnb 编码规范
+  "extends": "eslint-config-airbnb",
+  # 支持 ES7
+  "parser": "babel-eslint",
+  "rules": {
+    # 允许在 JS 文件中使用 JSX
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    # 允许类的非静态方法不使用 `this`；
+    "class-methods-use-this": 0,
+    # 允许引用未在 package.json 中写入依赖的包
+    "import/no-extraneous-dependencies": 0,
+    # 允许引用指定的而路径不存在的包
+    "import/no-unresolved": [2, { ignore: ['NavigatorNavigationBar'] }],
+    # 不进行react的prop类型限制
+    "react/forbid-prop-types": 0,
+    "no-console": 0,
+    "no-mixed-spaces-and-tabs": [2, false],
+    "unicode-bom": 0,
+    "indent": [1, 2, { "SwitchCase": 1 }],
+    "linebreak-style": [0, "windows"],
+    "eol-last": ["error", "always"],
+    "max-len": [1, 120],
+    "semi": [2, "always"],
+    "curly": [2, "all"],
+    #"no-use-before-define": ["error", { "functions": true, "classes": true }],
+    "no-use-before-define": 0,
+    #"no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
+    "no-unused-vars": 0,
+    "no-loop-func": "error",
+    "radix": "error",
+    "quotes": [1, "single", "avoid-escape"],
+    "no-multi-str": "error",
+    "no-new-wrappers": 2,
+    "no-new-object": "error",
+    "no-new-func": 1,
+    "no-array-constructor": 2,
+    "no-inner-declarations": [2, "functions"],
+    "no-prototype-builtins": 2,
+    "no-extend-native": 2,
+    "no-proto": 2,
+    "no-eval": 2,
+    "no-with": 2,
+    "no-delete-var": "error",
+    "no-undef": 0,
+    "no-unused-expressions": 0,
+    "no-underscore-dangle": 0,
+    "prefer-template": 0,
+    "no-plusplus": 0,
+    "react/jsx-no-bind": 0,
+    "global-require": 0,
+    "react/prefer-stateless-function": 0,
+    "react/require-default-props": 0,
+    "no-mixed-operators": 0,
+    "no-param-reassign": 0,
+    "no-alert": 0,
+    "react/jsx-boolean-value": 0,
+    "no-restricted-syntax": 0,
+    "guard-for-in": 0,
+  },
+}
