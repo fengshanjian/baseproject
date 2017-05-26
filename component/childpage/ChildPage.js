@@ -3,7 +3,7 @@
  * @Date:   2017-05-26T14:36:06+08:00
  * @Filename: ChildPage.js
  * @Last modified by:   will
- * @Last modified time: 2017-05-26T15:23:46+08:00
+ * @Last modified time: 2017-05-26T20:08:26+08:00
  */
 
 
@@ -16,7 +16,10 @@ import {
 import BaseComponent from '../BaseComponent';
 
 export default class ChildPage extends BaseComponent {
-
+  static navigationOptions = {
+    ...BaseComponent.navOptions,
+    headerTitle: '子页面',
+  }
   render() {
     return (
       <View style={styles.container}>

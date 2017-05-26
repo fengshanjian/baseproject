@@ -1,9 +1,9 @@
 /**
  * @Author: will
  * @Date:   2017-05-26T17:25:24+08:00
- * @Filename: NavigationStyles.js
+ * @Filename: navigationOptions.js
  * @Last modified by:   will
- * @Last modified time: 2017-05-26T17:28:59+08:00
+ * @Last modified time: 2017-05-26T19:51:44+08:00
  */
 
  import {
@@ -11,7 +11,8 @@
  } from 'react-native';
  import appColor from '../common/appColor';
 
- const styles = StyleSheet.create({
+ const navigationOptions = {
+   headerBackTitle: '返回',
    headerTitleStyle: {
      color: '#fff',
      textAlign: 'center',
@@ -21,5 +22,5 @@
    headerStyle: {
      backgroundColor: appColor.naviBar,
    },
- });
- export default styles;
+ };
+ export default navigationOptions;

@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T20:06:10+08:00
  * @Filename: BaseComponent.js
  * @Last modified by:   will
- * @Last modified time: 2017-05-26T17:15:57+08:00
+ * @Last modified time: 2017-05-26T20:08:21+08:00
  */
 
 
@@ -16,22 +16,14 @@ import {
   BackHandler,
 } from 'react-native';
 import appColor from '../common/appColor';
+import navigationOptions from '../common/navigationOptions';
 
-export default class MyComponent extends PureComponent {
+export default class BaseComponent extends PureComponent {
   static propTypes = {
     navigation: React.PropTypes.any,
   }
-  static navigationOptions = {
-        // title 可以这样设置成一个函数， state 会自动传过来
-    headerStyle: {
-      backgroundColor: appColor.naviBar,
-    },
-    headerTitleStyle: {
-      color: '#fff',
-      textAlign: 'center',
-      alignSelf: 'center',
-    },
-  };
+  static navOptions = navigationOptions;
+
   componentWillMount() {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', this.onAndroidBack);
@@ -43,11 +35,11 @@ export default class MyComponent extends PureComponent {
     }
   }
   onAndroidBack() {
-    this.onBack();
-    return true;
+    return this.onBack();
   }
   onBack() {
     const { goBack, state } = this.props.navigation;
     goBack();
+    return true;
   }
 }

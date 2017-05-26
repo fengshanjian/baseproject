@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:32:33+08:00
  * @Filename: MainApp.js
  * @Last modified by:   will
- * @Last modified time: 2017-05-26T19:27:35+08:00
+ * @Last modified time: 2017-05-26T20:08:17+08:00
  */
 
 
@@ -25,14 +25,19 @@ import HomePage from '../component/homepage/HomePage';
 import appState from '../mobx/AppState';
 import LoginPage from '../component/loginpage/LoginPage';
 import UserManager from '../common/UserManager';
+import BaseComponent from '../component/BaseComponent';
 
 @observer
-export default class MainApp extends PureComponent {
+export default class MainApp extends BaseComponent {
   static propTypes = {
     navigation: React.PropTypes.any,
   }
+  static navigationOptions = {
+    ...BaseComponent.navOptions,
+    headerTitle: '主页',
+  }
+
   componentWillMount() {
-    SplashScreen.hide();
     const self = this;
     NetInfo.isConnected.fetch().done((isConnected) => {
       console.log(`net isConnected:${isConnected}`);
@@ -45,7 +50,6 @@ export default class MainApp extends PureComponent {
     DeviceEventEmitter.addListener('tokenInvalid', this.tokenInvalid.bind(this));
   }
   async componentDidMount() {
-    SplashScreen.hide();
     if (appConfig.APP_SPLASH) {
       this.timer = setTimeout(
       () => {
@@ -69,7 +73,9 @@ export default class MainApp extends PureComponent {
     );
     DeviceEventEmitter.removeAllListeners();
   }
-
+  onBack() {
+    return false;
+  }
   timer;
 
   handleNetInfoChange(isConnected) {
