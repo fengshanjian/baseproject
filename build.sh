@@ -2,7 +2,7 @@
 # @Date:   2017-05-26T20:44:52+08:00
 # @Filename: build.sh
 # @Last modified by:   smartrabbit
-# @Last modified time: 2017-05-27T10:05:27+08:00
+# @Last modified time: 2017-05-27T14:11:09+08:00
 #!/bin/sh
 
 if [ "bundle" = "$1" ];then
@@ -61,6 +61,8 @@ else
     sed  "s/@TestProject/$1/g"  others/MainActivity.java > others/MainActivity.java.tmp
     mv others/MainActivity.java.tmp others/MainActivity.java
     projectName=`echo $1 | tr A-Z a-z `
+    sed  "s/com.testproject;/com.$projectName/g"  others/MainActivity.java > others/MainActivity.java.tmp
+    mv others/MainActivity.java.tmp others/MainActivity.java
     mv others/MainActivity.java ../android/app/src/main/java/com/$projectName/
     rm -rf others
     sed  's/minifyEnabled enableProguardInReleaseBuilds/minifyEnabled true/g'  ../android/app/build.gradle > ../android/app/build.gradle.tmp
