@@ -2,7 +2,7 @@
 # @Date:   2017-05-26T20:44:52+08:00
 # @Filename: build.sh
 # @Last modified by:   smartrabbit
-# @Last modified time: 2017-05-27T09:50:16+08:00
+# @Last modified time: 2017-05-27T10:05:27+08:00
 #!/bin/sh
 
 if [ "bundle" = "$1" ];then
@@ -32,6 +32,8 @@ else
     mv demo_project src
     cd src
     rm -rf .git
+    rm build.sh
+    rm README.md
     if [ "-nl" = "$2" ];then
       rm component/loginpage/LoginPage.js
       rm common/Loader.js
