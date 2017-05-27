@@ -10,12 +10,12 @@
 
 基本使用
 
-#sh build.sh {ProjectName}
+sh build.sh {ProjectName}
 
 
 不使用react-native-loader
 
-#sh build.sh {ProjectName} -nl
+sh build.sh {ProjectName} -nl
 
 
 注：
@@ -27,9 +27,9 @@
 
 脚本打包
 
-#cd ProjectName
+cd ProjectName
 
-#sh build.sh bundle
+sh build.sh bundle
 
 
 自动完成ios与android的打包，ios需要手动添加文件到工程
