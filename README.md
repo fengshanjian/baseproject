@@ -17,7 +17,9 @@
 使用方法
 
 1、下载工程里面的build.sh放置到工作空间
+
 curl -O https://raw.github.com/fengshanjian/demo_project/blob/master/build.sh
+
 
 2、运行脚本
 
