@@ -57,13 +57,29 @@ else
     sed  "s/@TestProject/$1/g"  others/AppDelegate.m > others/AppDelegate.m.tmp
     mv others/AppDelegate.m.tmp others/AppDelegate.m
     mv others/AppDelegate.m ../ios/$1/
+    mv others/CustomApi.h ../ios/$1/
+    mv others/CustomApi.m ../ios/$1/
 
     sed  "s/@TestProject/$1/g"  others/MainActivity.java > others/MainActivity.java.tmp
     mv others/MainActivity.java.tmp others/MainActivity.java
     projectName=`echo $1 | tr A-Z a-z `
+
     sed  "s/com.testproject;/com.$projectName;/g"  others/MainActivity.java > others/MainActivity.java.tmp
     mv others/MainActivity.java.tmp others/MainActivity.java
     mv others/MainActivity.java ../android/app/src/main/java/com/$projectName/
+
+    sed  "s/com.testproject;/com.$projectName;/g"  others/ExtensionPackage.java > others/ExtensionPackage.java.tmp
+    mv others/ExtensionPackage.java.tmp others/ExtensionPackage.java
+    mv others/ExtensionPackage.java ../android/app/src/main/java/com/$projectName/
+
+    sed  "s/com.testproject;/com.$projectName;/g"  others/CustomApi.java > others/CustomApi.java.tmp
+    mv others/CustomApi.java.tmp others/CustomApi.java
+    mv others/CustomApi.java ../android/app/src/main/java/com/$projectName/
+
+    sed  "s/com.testproject;/com.$projectName;/g"  others/MainApplication.java > others/MainApplication.java.tmp
+    mv others/MainApplication.java.tmp others/MainApplication.java
+    mv others/MainApplication.java ../android/app/src/main/java/com/$projectName/
+
     rm -rf others
     sed  's/minifyEnabled enableProguardInReleaseBuilds/minifyEnabled true/g'  ../android/app/build.gradle > ../android/app/build.gradle.tmp
     mv ../android/app/build.gradle.tmp ../android/app/build.gradle

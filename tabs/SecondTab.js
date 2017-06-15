@@ -1,9 +1,9 @@
 /**
  * @Author: will
- * @Date:   2017-05-25T19:57:05+08:00
- * @Filename: HomePage.js
+ * @Date:   2017-05-31T11:48:18+08:00
+ * @Filename: SecondPage.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-15T10:24:48+08:00
+ * @Last modified time: 2017-06-15T14:37:58+08:00
  */
 
 
@@ -11,26 +11,22 @@ import React, { PureComponent } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
+  Image,
   Button,
+  StyleSheet,
 } from 'react-native';
 
-
-export default class HomePage extends PureComponent {
+export default class SecondPage extends PureComponent {
   static propTypes = {
     navigation: React.PropTypes.any,
   }
+
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text style={{ marginBottom: 20 }}>
-          这是主页
+        <Text>
+          第二个Tab页面
         </Text>
-        <Button
-          onPress={() => navigate('ChildPage')}
-          title="子页面"
-        />
       </View>
     );
   }
@@ -39,8 +35,8 @@ export default class HomePage extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#fff',
   },
 });

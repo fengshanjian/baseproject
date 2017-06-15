@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:32:33+08:00
  * @Filename: MainApp.js
  * @Last modified by:   will
- * @Last modified time: 2017-05-27T09:05:31+08:00
+ * @Last modified time: 2017-06-15T16:23:23+08:00
  */
 
 
@@ -14,6 +14,8 @@ import {
   NetInfo,
   Modal,
   Platform,
+  BackHandler,
+  NativeModules,
   InteractionManager,
   DeviceEventEmitter,
 } from 'react-native';
@@ -25,19 +27,30 @@ import HomePage from '../component/homepage/HomePage';
 import appState from '../mobx/AppState';
 import LoginPage from '../component/loginpage/LoginPage';
 import UserManager from '../common/UserManager';
-import BaseComponent from '../component/BaseComponent';
+import StackOptions from '../common/StackOptions';
 
 @observer
-export default class MainApp extends BaseComponent {
+export default class MainApp extends PureComponent {
   static propTypes = {
     navigation: React.PropTypes.any,
   }
-  static navigationOptions = {
-    ...BaseComponent.navOptions,
+  static navigationOptions = ({ navigation }) => ({
+    ...StackOptions(navigation),
     headerTitle: '主页',
-  }
+    headerLeft: null,
+  })
 
   componentWillMount() {
+    if (Platform.OS === 'android') {
+      BackHandler.addEventListener('hardwareBackPress', () => {
+        const { state, goBack } = this.props.navigation;
+        goBack();
+        if (state.routeName === 'MainApp') {
+          NativeModules.CustomApi.exitApp();
+        }
+        return false;
+      });
+    }
     const self = this;
     NetInfo.isConnected.fetch().done((isConnected) => {
       console.log(`net isConnected:${isConnected}`);
@@ -65,6 +78,10 @@ export default class MainApp extends BaseComponent {
     console.log(global.pushToken);
   }
   componentWillUnmount() {
+    if (Platform.OS === 'android') {
+      BackHandler.removeEventListener('hardwareBackPress');
+    }
+
     const self = this;
     this.timer && clearTimeout(this.timer);
     NetInfo.removeEventListener(
