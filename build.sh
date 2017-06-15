@@ -2,7 +2,7 @@
 # @Date:   2017-05-26T20:44:52+08:00
 # @Filename: build.sh
 # @Last modified by:   will
-# @Last modified time: 2017-05-27T14:40:16+08:00
+# @Last modified time: 2017-06-15T18:49:22+08:00
 #!/bin/sh
 
 if [ "bundle" = "$1" ];then
@@ -13,9 +13,11 @@ elif [ "ios" = "$1" ];then
 elif [ "android" = "$1" ];then
     react-native bundle --entry-file index.android.js --bundle-output ./android/app/src/main/assets/index.android.bundle --platform android --assets-dest ./android/app/src/main/res/ --dev false
 else
-    react-native init $1
+    react-native init $1 --version 0.44.0
     mv build.sh $1
     cd $1
+    react-native unlink react-native-maps
+    react-native link react-native-maps
     npm install mobx --save
     npm install mobx-react --save
     npm install mobx-form-validate --save
