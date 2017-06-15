@@ -40,6 +40,11 @@ sh build.sh {ProjectName} -nl
 
 (2)、ios需要设置启动页为Image,并选择LaunchImage
 
+(3)android需要在androidManifest.xml中添加
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+
 
 脚本打包
 
