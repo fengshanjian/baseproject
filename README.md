@@ -42,8 +42,8 @@ sh build.sh {ProjectName} -nl
 
 (3)android需要在androidManifest.xml中添加
 
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 
 脚本打包
