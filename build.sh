@@ -1,7 +1,7 @@
 # @Author: will
 # @Date:   2017-05-26T20:44:52+08:00
 # @Filename: build.sh
-# @Last modified by:   smartrabbit
+# @Last modified by:   will
 # @Last modified time: 2017-05-27T14:40:16+08:00
 #!/bin/sh
 
