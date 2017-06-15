@@ -42,8 +42,11 @@ sh build.sh {ProjectName} -nl
 脚本打包
 
 cd ProjectName
-
-sh build.sh bundle
-
+//打android和ios包
+sh build.sh bundle  
+//打ios包
+sh build.sh ios
+//打android包
+sh build.sh android
 
 自动完成ios与android的打包，ios需要手动添加文件到工程
