@@ -1,9 +1,9 @@
 /**
  * @Author: will
  * @Date:   2017-05-26T16:00:31+08:00
- * @Filename: Loader.js
+ * @Filename: LoaderContainer.js
  * @Last modified by:   will
- * @Last modified time: 2017-05-26T16:21:17+08:00
+ * @Last modified time: 2017-06-21T19:04:58+08:00
  */
 
 
@@ -13,9 +13,9 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { Bubbles, DoubleBounce, Bars, Pulse } from 'react-native-loader';
+import { Loader } from 'react-native-komect-uikit';
 
-export default class Loader extends PureComponent {
+export default class LoaderContainer extends PureComponent {
   static propTypes = {
     visible: React.PropTypes.bool,
   }
@@ -36,7 +36,7 @@ export default class Loader extends PureComponent {
           justifyContent: 'center' }}
         opacity={0.5}
       >
-        <Bubbles size={10} color="#fff" />
+        <Loader.Bubbles size={10} color="#fff" />
       </View>
     );
   }

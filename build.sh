@@ -2,7 +2,7 @@
 # @Date:   2017-05-26T20:44:52+08:00
 # @Filename: build.sh
 # @Last modified by:   will
-# @Last modified time: 2017-06-15T18:49:22+08:00
+# @Last modified time: 2017-06-21T19:06:30+08:00
 #!/bin/sh
 
 if [ "bundle" = "$1" ];then
@@ -22,11 +22,8 @@ else
     npm install mobx-react --save
     npm install mobx-form-validate --save
     npm install react-navigation --save
-    if [ "-nl" = "$2" ];then
-      echo 'without react-native-loader'
-    else
-      npm install react-native-loader --save
-    fi
+    npm i react-native-vector-icons --save && react-native link react-native-vector-icons
+    npm i react-native-komect-uikit --save
     npm install babel-plugin-transform-decorators-legacy --save-dev
     # 使 eslint 支持 AirBnb 编码规范和ES7 编码规范,
     export PKG=eslint-config-airbnb;
@@ -39,14 +36,7 @@ else
     cd src
     rm -rf .git
     rm build.sh
-    rm README.md
-    if [ "-nl" = "$2" ];then
-      rm component/loginpage/LoginPage.js
-      rm common/Loader.js
-      mv component/loginpage/LoginPage2.js component/loginpage/LoginPage.js
-    else
-      rm component/loginpage/LoginPage2.js
-    fi
+    rm README.md    
     mv others/resource ../
     mv others/.babelrc ../
     mv others/.editorconfig ../
