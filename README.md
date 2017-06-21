@@ -18,21 +18,20 @@
 
 1、下载工程里面的build.sh放置到工作空间
 
+```js
 curl -O https://raw.githubusercontent.com/fengshanjian/demo_project/master/build.sh
 
+```
 
 2、运行脚本
 
 
 基本使用
 
+```js
 sh build.sh {ProjectName}
 
-
-不使用react-native-loader
-
-sh build.sh {ProjectName} -nl
-
+```
 
 注：
 
@@ -44,25 +43,27 @@ sh build.sh {ProjectName} -nl
 
 (4)、android需要在androidManifest.xml中添加
 
-
-uses-permission android:name="android.permission.ACCESS_NETWORK_STATE
-
+```xml
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE/>
+```
 
 脚本打包
 
+```js
 cd ProjectName
 
-//打android和ios包
+#打android和ios包
 
 sh build.sh bundle  
 
-//打ios包
+#打ios包
 
 sh build.sh ios
 
-//打android包
+#打android包
 
 sh build.sh android
 
+```
 
 自动完成ios与android的打包，ios需要手动添加文件到工程
