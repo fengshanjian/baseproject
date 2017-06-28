@@ -22,6 +22,7 @@ else
     npm install mobx-react --save
     npm install mobx-form-validate --save
     npm install react-navigation --save
+    npm install react-native-animatable --save
     npm i react-native-vector-icons --save && react-native link react-native-vector-icons
     npm i react-native-komect-uikit --save
     npm install babel-plugin-transform-decorators-legacy --save-dev
