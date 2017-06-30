@@ -1,9 +1,9 @@
 /**
  * @Author: will
  * @Date:   2017-06-15T09:59:20+08:00
- * @Filename: BackIcon.js
+ * @Filename: NaviIcon.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-15T11:13:38+08:00
+ * @Last modified time: 2017-06-30T16:08:38+08:00
  */
 
 
@@ -14,9 +14,10 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class BackIcon extends PureComponent {
+export default class NaviIcon extends PureComponent {
   static propTypes = {
     onPress: React.PropTypes.func,
+    image: React.PropTypes.any,
   }
   render() {
     return (
@@ -27,7 +28,7 @@ export default class BackIcon extends PureComponent {
         <Image
           resizeMode="contain"
           style={styles.button}
-          source={require('../../resource/image/demo/icon_back.png')}
+          source={this.props.image}
         />
       </TouchableOpacity>
     );

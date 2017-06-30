@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:32:33+08:00
  * @Filename: MainApp.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-15T16:23:23+08:00
+ * @Last modified time: 2017-06-30T16:07:39+08:00
  */
 
 
@@ -71,9 +71,14 @@ export default class MainApp extends PureComponent {
       appConfig.SPLASH_TIME * 1000,
     );
     }
+    if (__DEV__) {
+      appState.login = true;
+    }
     const user = await UserManager.getUser();
     if (user) {
       appState.login = true;
+    } else if (__DEV__) {
+      appState.login = false;
     }
     console.log(global.pushToken);
   }
