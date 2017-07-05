@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T13:18:07+08:00
 * @Filename: LoginPage.js
 * @Last modified by:   will
- * @Last modified time: 2017-07-05T10:45:17+08:00
+ * @Last modified time: 2017-07-05T11:42:52+08:00
 * @flow weak
 */
 
@@ -23,10 +23,10 @@
  } from 'react-native';
  import validate from 'mobx-form-validate';
  import { observable } from 'mobx';
+ import { Toast } from 'react-native-komect-uikit';
  import { observer } from 'mobx-react/native';
  import { login } from '../../common/request';
  import { FormProvider, FormItem, Submit } from './form';
- import Toast from '../../common/Toast/Toast';
  import UserManager from '../../common/UserManager';
  import appColor from '../../common/appColor';
  import appFont from '../../common/appFont';
@@ -87,12 +87,12 @@
    submit = async () => {
      const { goBack } = this.props.navigation;
      if (!this.form.mobile) {
-       Toast.show('请输入用户名');
+       Toast.message('请输入用户名');
        return;
      }
 
      if (!this.form.pwd) {
-       Toast.show('请输入密码');
+       Toast.message('请输入密码');
        return;
      }
 
@@ -101,7 +101,7 @@
      this.timer = setTimeout(() => {
        if (appConfig.IS_TEST) {
          appState.updateLogin(true);
-         Toast.show('登录成功');
+         Toast.message('登录成功');
          goBack(null);
        }
        this.form.loading = false;
@@ -117,10 +117,10 @@
          response.data.userInfo.token = response.data.sessionId;
          UserManager.saveUser(response.data.userInfo);
          appState.updateLogin(true);
-         Toast.show('登录成功');
+         Toast.message('登录成功');
          goBack(null);
        } else {
-         Toast.show(response.msg);
+         Toast.message(response.msg);
        }
      }, () => {
        this.timer && clearTimeout(this.timer);
