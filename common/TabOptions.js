@@ -3,7 +3,7 @@
  * @Date:   2017-06-15T15:12:13+08:00
  * @Filename: TabOptions.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-15T15:20:45+08:00
+ * @Last modified time: 2017-06-30T17:04:19+08:00
  */
 
 
@@ -12,7 +12,6 @@
  } from 'react-native';
  import React from 'react';
  import appColor from '../common/appColor';
- import BackIcon from '../commonview/BackIcon';
 
  const TabOptions = (navigation, normalImage, selectedImage, tabBarTitle, navTitle) => ({
    headerBackTitle: null,

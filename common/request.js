@@ -3,7 +3,7 @@
  * @Date:   2017-05-26T12:01:11+08:00
  * @Filename: request.js
  * @Last modified by:   will
- * @Last modified time: 2017-05-26T16:11:17+08:00
+ * @Last modified time: 2017-07-05T10:04:06+08:00
  */
 
 
@@ -69,7 +69,7 @@
            userManager.token = null;
            userManager.user = null;
            UserManager.delUser();
-           appState.login = false;
+           appState.updateLogin(false);
          }
          resolve(response);
        })

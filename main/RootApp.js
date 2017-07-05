@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:34:03+08:00
  * @Filename: RootApp.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-15T16:32:20+08:00
+ * @Last modified time: 2017-07-05T10:40:28+08:00
  */
 
 
@@ -13,7 +13,7 @@ import MainApp from './MainApp';
 import ChildPage from '../component/childpage/ChildPage';
 
 const RootApp = StackNavigator({
-  MainApp: { screen: MainApp },
+  MainApp: { screen: MainApp, navigationOptions: { header: null } },
   ChildPage: { screen: ChildPage },
 }, {
   headerMode: 'screen',

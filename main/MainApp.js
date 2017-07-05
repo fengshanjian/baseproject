@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:32:33+08:00
  * @Filename: MainApp.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-30T16:07:39+08:00
+ * @Last modified time: 2017-07-05T11:30:28+08:00
  */
 
 
@@ -19,18 +19,19 @@ import {
   InteractionManager,
   DeviceEventEmitter,
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import { observer } from 'mobx-react/native';
 import SplashScreen from 'react-native-splash-screen';
 import appConfig from '../config/appConfig';
 import PushCenter from '../common/PushCenter';
 import HomePage from '../component/homepage/HomePage';
 import appState from '../mobx/AppState';
-import LoginPage from '../component/loginpage/LoginPage';
 import UserManager from '../common/UserManager';
 import StackOptions from '../common/StackOptions';
+import LoginPage from '../component/loginpage/LoginPage';
 
 @observer
-export default class MainApp extends PureComponent {
+class MainApp extends PureComponent {
   static propTypes = {
     navigation: React.PropTypes.any,
   }
@@ -71,14 +72,12 @@ export default class MainApp extends PureComponent {
       appConfig.SPLASH_TIME * 1000,
     );
     }
-    if (__DEV__) {
-      appState.login = true;
-    }
+
     const user = await UserManager.getUser();
     if (user) {
-      appState.login = true;
-    } else if (__DEV__) {
-      appState.login = false;
+      appState.updateLogin(true);
+    } else {
+      this.props.navigation.navigate('LoginPage');
     }
     console.log(global.pushToken);
   }
@@ -109,7 +108,7 @@ export default class MainApp extends PureComponent {
   */
   async tokenInvalid() {
     await UserManager.delUser();
-    appState.login = false;
+    appState.updateLogin(false);
   }
 
   // 渲染具体内容
@@ -119,18 +118,7 @@ export default class MainApp extends PureComponent {
         <HomePage navigation={this.props.navigation} />
       );
     }
-    return (
-      <View style={{ flex: 1 }}>
-        <Modal
-          animationType={'slide'}
-          transparent={false}
-          visible={!appState.login}
-          onRequestClose={() => { console.log(''); }}
-        >
-          <LoginPage />
-        </Modal>
-      </View>
-    );
+    return (<View style={{ flex: 1, backgroundColor: '#fff' }} />);
   }
   _renderStatusBar() {
     if (Platform.OS === 'ios') {
@@ -153,3 +141,16 @@ export default class MainApp extends PureComponent {
     );
   }
 }
+
+const Main = StackNavigator(
+  {
+    MainApp: { screen: MainApp },
+    LoginPage: { screen: LoginPage },
+  },
+  {
+    headerMode: 'screen',
+    mode: 'modal',
+  },
+);
+
+export default Main;

@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T13:18:07+08:00
 * @Filename: LoginPage.js
 * @Last modified by:   will
- * @Last modified time: 2017-06-14T10:23:55+08:00
+ * @Last modified time: 2017-07-05T10:45:17+08:00
 * @flow weak
 */
 
@@ -17,6 +17,7 @@
    NativeModules,
    Text,
    Alert,
+   Platform,
    Keyboard,
    StatusBar,
  } from 'react-native';
@@ -68,17 +69,23 @@
 
 @observer
  export default class LoginPage extends PureComponent {
+   static propTypes = {
+     navigation: React.PropTypes.any,
+   }
+   static navigationOptions = ({ navigation }) => ({
+     header: null,
+   })
    async componentDidMount() {
      if (global.pushToken === undefined) {
        global.pushToken = await AsyncStorage.getItem('push_token');
      }
-     appState.barStyle = 'default';
    }
 
    form= new LoginForm();
    timer;
 
    submit = async () => {
+     const { goBack } = this.props.navigation;
      if (!this.form.mobile) {
        Toast.show('请输入用户名');
        return;
@@ -93,8 +100,9 @@
      this.form.loading = true;
      this.timer = setTimeout(() => {
        if (appConfig.IS_TEST) {
-         appState.updateLogin();
+         appState.updateLogin(true);
          Toast.show('登录成功');
+         goBack(null);
        }
        this.form.loading = false;
      }, appConfig.REQUEST_TIME);
@@ -108,8 +116,9 @@
        if (response.recode === 200) {
          response.data.userInfo.token = response.data.sessionId;
          UserManager.saveUser(response.data.userInfo);
-         appState.updateLogin();
+         appState.updateLogin(true);
          Toast.show('登录成功');
+         goBack(null);
        } else {
          Toast.show(response.msg);
        }
@@ -117,22 +126,10 @@
        this.timer && clearTimeout(this.timer);
      });
    }
-   _renderStatusBar() {
-     if (Platform.os === 'ios') {
-       return (
-         <StatusBar
-           translucent
-           barStyle={appState.barStyle}
-         />
-       );
-     }
-     return null;
-   }
    render() {
      return (
        <FormProvider form={this.form}>
          <View style={styles.container}>
-           {this._renderStatusBar}
            <Text style={[appFont.blueTilteText, { marginTop: 350 * heightScale, alignSelf: 'center' }]}>
              登录页面
            </Text>

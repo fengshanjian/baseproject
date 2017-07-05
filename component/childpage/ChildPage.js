@@ -3,7 +3,7 @@
  * @Date:   2017-05-26T14:36:06+08:00
  * @Filename: ChildPage.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-15T15:10:53+08:00
+ * @Last modified time: 2017-06-30T17:03:40+08:00
  */
 
 
@@ -14,7 +14,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import StackOptions from '../../common/StackOptions';
-import BackIcon from '../../commonview/BackIcon';
 
 export default class ChildPage extends PureComponent {
 
