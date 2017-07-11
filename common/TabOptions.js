@@ -3,9 +3,11 @@
  * @Date:   2017-06-15T15:12:13+08:00
  * @Filename: TabOptions.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-30T17:04:19+08:00
+ * @Last modified time: 2017-07-11T19:19:17+08:00
  */
 
+
+/* eslint-disable react/prop-types */
 
  import {
    Image,
@@ -13,20 +15,8 @@
  import React from 'react';
  import appColor from '../common/appColor';
 
- const TabOptions = (navigation, normalImage, selectedImage, tabBarTitle, navTitle) => ({
-   headerBackTitle: null,
+ const TabOptions = (navigation, normalImage, selectedImage, tabBarTitle) => ({
    tabBarLabel: tabBarTitle,
-   headerTitle: navTitle,
-   headerTitleStyle: {
-     color: '#fff',
-     textAlign: 'center',
-     alignSelf: 'center',
-     fontSize: 18,
-   },
-   headerStyle: {
-     backgroundColor: appColor.naviBar,
-   },
-   headerLeft: null,
    tabBarIcon: ({ focused }) => (
      focused ?
        <Image

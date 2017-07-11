@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:32:33+08:00
  * @Filename: MainApp.js
  * @Last modified by:   will
- * @Last modified time: 2017-07-05T11:30:28+08:00
+ * @Last modified time: 2017-07-11T19:13:55+08:00
  */
 
 
@@ -31,7 +31,7 @@ import StackOptions from '../common/StackOptions';
 import LoginPage from '../component/loginpage/LoginPage';
 
 @observer
-class MainApp extends PureComponent {
+export default class MainApp extends PureComponent {
   static propTypes = {
     navigation: React.PropTypes.any,
   }
@@ -45,11 +45,12 @@ class MainApp extends PureComponent {
     if (Platform.OS === 'android') {
       BackHandler.addEventListener('hardwareBackPress', () => {
         const { state, goBack } = this.props.navigation;
-        goBack();
         if (state.routeName === 'MainApp') {
           NativeModules.CustomApi.exitApp();
+          return true;
         }
-        return false;
+        goBack();
+        return true;
       });
     }
     const self = this;
@@ -109,6 +110,7 @@ class MainApp extends PureComponent {
   async tokenInvalid() {
     await UserManager.delUser();
     appState.updateLogin(false);
+    this.props.navigation.navigate('LoginPage');
   }
 
   // 渲染具体内容
@@ -120,37 +122,17 @@ class MainApp extends PureComponent {
     }
     return (<View style={{ flex: 1, backgroundColor: '#fff' }} />);
   }
-  _renderStatusBar() {
-    if (Platform.OS === 'ios') {
-      return (
-        <StatusBar
-          translucent
-          barStyle={appState.barStyle}
-        />
-      );
-    }
-    return null;
-  }
+
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
-        {this._renderStatusBar()}
+        <StatusBar
+          translucent
+          barStyle={appState.barStyle} // default,light-content
+        />
         <PushCenter />
         {this._renderContent()}
       </View>
     );
   }
 }
-
-const Main = StackNavigator(
-  {
-    MainApp: { screen: MainApp },
-    LoginPage: { screen: LoginPage },
-  },
-  {
-    headerMode: 'screen',
-    mode: 'modal',
-  },
-);
-
-export default Main;

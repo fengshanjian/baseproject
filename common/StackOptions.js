@@ -3,7 +3,7 @@
  * @Date:   2017-05-26T17:25:24+08:00
  * @Filename: StackOptions.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-30T16:09:33+08:00
+ * @Last modified time: 2017-07-11T19:28:11+08:00
  */
 
 
@@ -13,6 +13,7 @@
 
  const StackOptions = navigation => ({
    headerBackTitle: null,
+   gesturesEnabled: true,
    headerTitleStyle: {
      color: '#fff',
      textAlign: 'center',

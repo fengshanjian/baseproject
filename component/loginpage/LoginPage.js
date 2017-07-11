@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T13:18:07+08:00
 * @Filename: LoginPage.js
 * @Last modified by:   will
- * @Last modified time: 2017-07-05T11:42:52+08:00
+ * @Last modified time: 2017-07-11T19:15:35+08:00
 * @flow weak
 */
 
@@ -74,11 +74,14 @@
    }
    static navigationOptions = ({ navigation }) => ({
      header: null,
+     gesturesEnabled: false,
+     mode: 'modal',
    })
    async componentDidMount() {
      if (global.pushToken === undefined) {
        global.pushToken = await AsyncStorage.getItem('push_token');
      }
+     appState.barStyle = 'default';
    }
 
    form= new LoginForm();
@@ -102,7 +105,7 @@
        if (appConfig.IS_TEST) {
          appState.updateLogin(true);
          Toast.message('登录成功');
-         goBack(null);
+         goBack('MainApp');
        }
        this.form.loading = false;
      }, appConfig.REQUEST_TIME);
@@ -118,7 +121,7 @@
          UserManager.saveUser(response.data.userInfo);
          appState.updateLogin(true);
          Toast.message('登录成功');
-         goBack(null);
+         goBack('MainApp');
        } else {
          Toast.message(response.msg);
        }

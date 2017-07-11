@@ -3,7 +3,7 @@
  * @Date:   2017-05-31T09:02:47+08:00
  * @Filename: Tabs.js
  * @Last modified by:   will
- * @Last modified time: 2017-06-15T15:25:11+08:00
+ * @Last modified time: 2017-07-11T19:18:23+08:00
  */
 
 import React from 'react';
@@ -14,38 +14,11 @@ import {
 import TabOptions from '../common/TabOptions';
 import MainTab from '../tabs/MainTab';
 import SecondTab from '../tabs/SecondTab';
-import ChildPage from '../component/childpage/ChildPage';
 
 const Tabs = TabNavigator(
   {
-    MainTab: {
-      screen: MainTab,
-      navigationOptions: ({ navigation }) => {
-        const normalImage = require('../../resource/image/demo/message_disable.png');
-        const selectedImage = require('../../resource/image/demo/message.png');
-        return TabOptions(navigation, normalImage, selectedImage, '消息', '消息');
-      },
-    },
-    SecondTab: {
-      screen: SecondTab,
-      navigationOptions: ({ navigation }) => {
-        const normalImage = require('../../resource/image/demo/contacts_diable.png');
-        const selectedImage = require('../../resource/image/demo/contacts.png');
-        return TabOptions(navigation, normalImage, selectedImage, '通讯录', '通讯录');
-      },
-    },
-    /******不显示导航栏如下******/
-    // SecondTab: {
-    //   screen: SecondTab,
-    //   navigationOptions: ({ navigation }) => {
-    //     const normalImage = require('../../resource/image/demo/contacts_diable.png');
-    //     const selectedImage = require('../../resource/image/demo/contacts.png');
-    //     return {
-    //       ...TabOptions(navigation, normalImage, selectedImage, '通讯录'),
-    //       header: null,
-    //     };
-    //   },
-    // },
+    MainTab: { screen: MainTab },
+    SecondTab: { screen: SecondTab },
   },
   {
     tabBarOptions: {
@@ -66,7 +39,7 @@ const Tabs = TabNavigator(
       labelStyle: {
         marginTop: 0,
         fontSize: 12,
-      }, //android
+      }, // android
     },
     tabBarPosition: 'bottom', // android
     swipeEnabled: false, // android
