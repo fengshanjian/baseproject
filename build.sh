@@ -13,7 +13,7 @@ elif [ "ios" = "$1" ];then
 elif [ "android" = "$1" ];then
     react-native bundle --entry-file index.android.js --bundle-output ./android/app/src/main/assets/index.android.bundle --platform android --assets-dest ./android/app/src/main/res/ --dev false
 else
-    react-native init $1 --version 0.44.0
+    react-native init $1 
     mv build.sh $1
     cd $1
     react-native unlink react-native-maps
