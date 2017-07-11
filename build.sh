@@ -21,6 +21,8 @@ else
     npm install mobx --save
     npm install mobx-react --save
     npm install mobx-form-validate --save
+    npm install --save react-native-device-info
+    react-native link react-native-device-info
     npm install react-navigation --save
     npm install react-native-animatable --save
     npm i react-native-vector-icons --save && react-native link react-native-vector-icons
