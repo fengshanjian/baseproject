@@ -3,13 +3,13 @@
  * @Date:   2017-05-31T09:02:47+08:00
  * @Filename: Tabs.js
  * @Last modified by:   will
- * @Last modified time: 2017-07-11T19:18:23+08:00
+ * @Last modified time: 2017-07-12T14:09:19+08:00
  */
 
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import {
-  Image,
+  Platform,
 } from 'react-native';
 import TabOptions from '../common/TabOptions';
 import MainTab from '../tabs/MainTab';
@@ -26,12 +26,12 @@ const Tabs = TabNavigator(
       activeTintColor: '#1ab20a',
       inactiveTintColor: '#808080',
       indicatorStyle: { height: 0 }, // android
-      style: {
+      style: Platform.OS === 'android' ? {
         height: 49,
         backgroundColor: '#f1f1f1',
         borderTopColor: '#ccc',
         borderTopWidth: 0.5,
-      },
+      } : null,
       iconStyle: {
         width: 26,
         height: 26,
