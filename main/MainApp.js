@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:32:33+08:00
  * @Filename: MainApp.js
  * @Last modified by:   will
- * @Last modified time: 2017-07-11T19:13:55+08:00
+ * @Last modified time: 2017-08-07T20:52:30+08:00
  */
 
 
@@ -29,6 +29,7 @@ import appState from '../mobx/AppState';
 import UserManager from '../common/UserManager';
 import StackOptions from '../common/StackOptions';
 import LoginPage from '../component/loginpage/LoginPage';
+import Tab from '../tabs/Tab';
 
 @observer
 export default class MainApp extends PureComponent {
@@ -42,17 +43,6 @@ export default class MainApp extends PureComponent {
   })
 
   componentWillMount() {
-    if (Platform.OS === 'android') {
-      BackHandler.addEventListener('hardwareBackPress', () => {
-        const { state, goBack } = this.props.navigation;
-        if (state.routeName === 'MainApp') {
-          NativeModules.CustomApi.exitApp();
-          return true;
-        }
-        goBack();
-        return true;
-      });
-    }
     const self = this;
     NetInfo.isConnected.fetch().done((isConnected) => {
       console.log(`net isConnected:${isConnected}`);
@@ -83,10 +73,6 @@ export default class MainApp extends PureComponent {
     console.log(global.pushToken);
   }
   componentWillUnmount() {
-    if (Platform.OS === 'android') {
-      BackHandler.removeEventListener('hardwareBackPress');
-    }
-
     const self = this;
     this.timer && clearTimeout(this.timer);
     NetInfo.removeEventListener(
@@ -115,12 +101,11 @@ export default class MainApp extends PureComponent {
 
   // 渲染具体内容
   _renderContent() {
-    if (appState.login) {
-      return (
+    return (
+      <Tab>
         <HomePage navigation={this.props.navigation} />
-      );
-    }
-    return (<View style={{ flex: 1, backgroundColor: '#fff' }} />);
+      </Tab>
+    );
   }
 
   render() {

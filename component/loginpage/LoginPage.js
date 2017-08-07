@@ -3,7 +3,7 @@
 * @Date:   2017-03-26T13:18:07+08:00
 * @Filename: LoginPage.js
 * @Last modified by:   will
- * @Last modified time: 2017-07-11T19:15:35+08:00
+ * @Last modified time: 2017-08-07T21:04:44+08:00
 * @flow weak
 */
 
@@ -88,7 +88,7 @@
    timer;
 
    submit = async () => {
-     const { goBack } = this.props.navigation;
+     const { goBack, navigate } = this.props.navigation;
      if (!this.form.mobile) {
        Toast.message('请输入用户名');
        return;
@@ -104,8 +104,10 @@
      this.timer = setTimeout(() => {
        if (appConfig.IS_TEST) {
          appState.updateLogin(true);
-         Toast.message('登录成功');
+         Toast.success('登录成功');
          goBack('MainApp');
+         // 如果是Tab模式的后面需要加一句
+         // navigate('MainTab')
        }
        this.form.loading = false;
      }, appConfig.REQUEST_TIME);
@@ -120,10 +122,12 @@
          response.data.userInfo.token = response.data.sessionId;
          UserManager.saveUser(response.data.userInfo);
          appState.updateLogin(true);
-         Toast.message('登录成功');
+         Toast.success('登录成功');
          goBack('MainApp');
+         // 如果是Tab模式的后面需要加一句
+         // navigate('MainTab')
        } else {
-         Toast.message(response.msg);
+         Toast.fail(response.msg);
        }
      }, () => {
        this.timer && clearTimeout(this.timer);

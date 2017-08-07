@@ -3,7 +3,7 @@
  * @Date:   2017-05-31T11:48:18+08:00
  * @Filename: SecondPage.js
  * @Last modified by:   will
- * @Last modified time: 2017-07-11T19:17:34+08:00
+ * @Last modified time: 2017-08-07T21:00:01+08:00
  */
 
 
@@ -17,8 +17,10 @@
  } from 'react-native';
  import StackOptions from '../common/StackOptions';
  import TabOptions from '../common/TabOptions';
+ import Tab from './Tab';
+ import SecondPage from '../component/secondpage/SecondPage';
 
- export default class SecondPage extends PureComponent {
+ export default class SecondTab extends PureComponent {
    static propTypes = {
      navigation: React.PropTypes.any,
    }
@@ -35,11 +37,9 @@
 
    render() {
      return (
-       <View style={styles.container}>
-         <Text>
-           第二个Tab页面
-         </Text>
-       </View>
+       <Tab>
+         <SecondPage />
+       </Tab>
      );
    }
  }
