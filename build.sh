@@ -34,7 +34,7 @@ else
     npm install babel-eslint --save-dev
     npm install react-native-splash-screen --save
     react-native link react-native-splash-screen
-    git clone https://github.com/fengshanjian/demo_project.git
+    git clone https://github.com/fengshanjian/create-react-native-project.git
     mv demo_project src
     cd src
     rm -rf .git
