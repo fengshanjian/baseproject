@@ -1,4 +1,4 @@
-# baseproject
+# create-react-native-project
 
 
 该项目完成的主要工作有
@@ -36,13 +36,11 @@ sh build.sh {ProjectName}
 
 ##注：
 
-(1)、使用react-native-loader，ios版本需要手动添加Library:ART,添加方法参考http://facebook.github.io/react-native/releases/0.44/docs/linking-libraries-ios.html#linking-libraries  ,ART目录在node_modules/react-native/Library/ART/ART.xcodeproj
+(1)、ios需要设置启动页为Image,并选择LaunchImage
 
-(2)、ios需要设置启动页为Image,并选择LaunchImage
+(2)、ios添加CustomApi.h和.m文件到工程
 
-(3)、ios添加CustomApi.h和.m文件到工程
-
-(4)、android需要在androidManifest.xml中添加
+(3)、android需要在androidManifest.xml中添加
 
 ```xml
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE/>
