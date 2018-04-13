@@ -74,36 +74,3 @@ sh build.sh android
 
 
 
-##android返回键适配
-由于采用react-navigation作为导航器，导航器默认监听了安卓的返回按钮，但是在首页返回时并不能返回到桌面
-
-所以在```react-navigation```的```src```目录下的```createNavigationContainer.js```文件中在back监听的代码中加入自己想做的监听
-
-例如我们在```react-navigation 1.0.0-beta.12```的```createNavigationContainer.js```文件的154行修改如下：
-
-原来代码
-
-```
- this.subs = BackHandler.addEventListener('hardwareBackPress', () =>
-    this.dispatch(NavigationActions.back())
- );
-      
-```
-
-修改代码
-
-```
-  this.subs = BackHandler.addEventListener('hardwareBackPress', () => {         
-    const { nav } = this.state;
-    if (nav.routes[nav.index].routeName === 'MainApp'||nav.routes[nav.index].routeName === 'LoginPage') {
-       NativeModules.CustomApi.exitApp();
-       return false;
-    }
-    else {
-       return this.dispatch(NavigationActions.back());
-    }
- });
- ```
-
-
-
