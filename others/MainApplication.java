@@ -41,7 +41,12 @@ public class MainApplication extends Application implements ReactApplication {
             return "index.android.bundle";
         }
     };
-
+    public static boolean isDebugable() {
+        if ("debug".equals(BuildConfig.BUILD_TYPE.toString())) {
+            return true;
+        }
+        return false;
+    }
     @Override
     public ReactNativeHost getReactNativeHost() {
         return mReactNativeHost;
