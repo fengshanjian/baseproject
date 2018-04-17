@@ -16,8 +16,6 @@ else
     react-native init $1 
     mv build.sh $1
     cd $1
-    react-native unlink react-native-maps
-    react-native link react-native-maps
     npm install mobx --save
     npm install mobx-react --save
     npm install mobx-form-validate --save
