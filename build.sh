@@ -59,6 +59,9 @@ else
     mv others/CustomApi.h ../ios/$1/
     mv others/CustomApi.m ../ios/$1/
 
+    sed  "s/@TestProject/$1/g"  others/app.json > others/app.json.tmp
+    mv others/app.json.tmp others/app.json
+
     sed  "s/@TestProject/$1/g"  others/MainActivity.java > others/MainActivity.java.tmp
     mv others/MainActivity.java.tmp others/MainActivity.java
     projectName=`echo $1 | tr A-Z a-z `
