@@ -6,12 +6,12 @@
 #!/bin/sh
 
 if [ "bundle" = "$1" ];then
-    react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false
-    react-native bundle --entry-file index.android.js --bundle-output ./android/app/src/main/assets/index.android.bundle --platform android --assets-dest ./android/app/src/main/res/ --dev false
+    react-native bundle --entry-file index.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false
+    react-native bundle --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.bundle --platform android --assets-dest ./android/app/src/main/res/ --dev false
 elif [ "ios" = "$1" ];then
-    react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false
+    react-native bundle --entry-file index.js --bundle-output ./ios/bundle/index.ios.jsbundle --platform ios --assets-dest ./ios/bundle --dev false
 elif [ "android" = "$1" ];then
-    react-native bundle --entry-file index.android.js --bundle-output ./android/app/src/main/assets/index.android.bundle --platform android --assets-dest ./android/app/src/main/res/ --dev false
+    react-native bundle --entry-file index.js --bundle-output ./android/app/src/main/assets/index.android.bundle --platform android --assets-dest ./android/app/src/main/res/ --dev false
 else
     react-native init $1 
     mv build.sh $1
@@ -43,10 +43,8 @@ else
     mv others/.editorconfig ../
     mv others/.eslintrc ../
     mv others/.gitignore ../
-    echo "AppRegistry.registerComponent('$1', () => RootApp);" >>others/index.android.js
-    echo "AppRegistry.registerComponent('$1', () => RootApp);" >>others/index.ios.js
-    mv others/index.android.js ../
-    mv others/index.ios.js ../
+    echo "AppRegistry.registerComponent('$1', () => RootApp);" >>others/index.js
+    mv others/index.js ../
     mv others/layout ../android/app/src/main/res/
     mv others/drawable-xxhdpi ../android/app/src/main/res/
     mv others/drawable-xhdpi ../android/app/src/main/res/
