@@ -22,7 +22,7 @@
 1、下载工程里面的build.sh放置到工作空间
 
 ```js
-curl -O https://raw.githubusercontent.com/fengshanjian/baseproject/master/build.sh
+curl -O https://raw.githubusercontent.com/fengshanjian/create-react-native-project/master/build.sh
 
 ```
 
