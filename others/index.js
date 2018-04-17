@@ -1,10 +1,11 @@
 /**
- * @Author: will
- * @Date:   2017-05-25T10:01:45+08:00
- * @Filename: index.ios.js
- * @Last modified by:   will
- * @Last modified time: 2017-06-15T16:37:04+08:00
+ * @Author: smartrabbit
+ * @Date:   2018-04-16T17:11:48+08:00
+ * @Filename: index.js
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-17T09:49:59+08:00
  */
+
 
 
 import { AppRegistry } from 'react-native';
