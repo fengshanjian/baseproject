@@ -82,5 +82,6 @@ else
     mv ../android/app/build.gradle.tmp ../android/app/build.gradle
     mkdir ../ios/bundle
     mkdir ../android/app/src/main/assets/
+    cd ..
     react-native link
 fi
