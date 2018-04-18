@@ -2,15 +2,15 @@
  * @Author: will
  * @Date:   2017-05-26T12:01:11+08:00
  * @Filename: request.js
- * @Last modified by:   will
- * @Last modified time: 2017-07-05T10:04:06+08:00
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-18T14:32:20+08:00
  */
 
 
  import { AsyncStorage, Platform, Alert } from 'react-native';
  import apiUrl from '../config/appConfig';
  import UserManager from '../common/UserManager';
- import appState from '../mobx/AppState';
+ import globalState from '../globalState/GlobalState';
 
  const NONET = 2500;
  const REQUNAUTHEDCODE = 1107;
@@ -69,7 +69,7 @@
            userManager.token = null;
            userManager.user = null;
            UserManager.delUser();
-           appState.updateLogin(false);
+           globalState.updateLogin(false);
          }
          resolve(response);
        })

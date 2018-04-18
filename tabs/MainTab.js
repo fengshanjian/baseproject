@@ -2,38 +2,38 @@
  * @Author: will
  * @Date:   2017-05-31T11:47:22+08:00
  * @Filename: MainTab.js
- * @Last modified by:   will
- * @Last modified time: 2017-08-07T20:35:40+08:00
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-18T14:34:01+08:00
  */
 
 
- import React, { PureComponent } from 'react';
- import {
-   View,
-   StatusBar,
-   NetInfo,
-   Modal,
-   Platform,
-   BackHandler,
-   NativeModules,
-   InteractionManager,
-   DeviceEventEmitter,
- } from 'react-native';
- import { StackNavigator } from 'react-navigation';
- import { observer } from 'mobx-react/native';
- import SplashScreen from 'react-native-splash-screen';
- import appConfig from '../config/appConfig';
- import PushCenter from '../common/PushCenter';
- import HomePage from '../component/homepage/HomePage';
- import appState from '../mobx/AppState';
- import UserManager from '../common/UserManager';
- import StackOptions from '../common/StackOptions';
- import LoginPage from '../component/loginpage/LoginPage';
- import TabOptions from '../common/TabOptions';
- import Tab from './Tab';
+import React, { PureComponent } from 'react';
+import {
+  View,
+  StatusBar,
+  NetInfo,
+  Modal,
+  Platform,
+  BackHandler,
+  NativeModules,
+  InteractionManager,
+  DeviceEventEmitter,
+} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { observer } from 'mobx-react/native';
+import SplashScreen from 'react-native-splash-screen';
+import appConfig from '../config/appConfig';
+import PushCenter from '../common/PushCenter';
+import HomePage from '../component/homepage/HomePage';
+import globalState from '../globalState/GlobalState';
+import UserManager from '../common/UserManager';
+import StackOptions from '../common/StackOptions';
+import LoginPage from '../component/loginpage/LoginPage';
+import TabOptions from '../common/TabOptions';
+import Tab from './Tab';
 
  @observer
- export default class MainApp extends PureComponent {
+export default class MainApp extends PureComponent {
    static propTypes = {
      navigation: React.PropTypes.any,
    }
@@ -55,24 +55,24 @@
        global.isConnected = isConnected;
      });
      NetInfo.isConnected.addEventListener(
-     'change',
-     self.handleNetInfoChange,
-   );
+       'change',
+       self.handleNetInfoChange,
+     );
      DeviceEventEmitter.addListener('tokenInvalid', this.tokenInvalid.bind(this));
    }
    async componentDidMount() {
      if (appConfig.APP_SPLASH) {
        this.timer = setTimeout(
-       () => {
-         SplashScreen.hide();
-       },
-       appConfig.SPLASH_TIME * 1000,
-     );
+         () => {
+           SplashScreen.hide();
+         },
+         appConfig.SPLASH_TIME * 1000,
+       );
      }
 
      const user = await UserManager.getUser();
      if (user) {
-       appState.updateLogin(true);
+       globalState.updateLogin(true);
      } else {
        this.props.navigation.navigate('LoginPage');
      }
@@ -82,8 +82,8 @@
      const self = this;
      this.timer && clearTimeout(this.timer);
      NetInfo.removeEventListener(
-        'change',
-        self.handleNetInfoChange,
+       'change',
+       self.handleNetInfoChange,
      );
      DeviceEventEmitter.removeAllListeners();
    }
@@ -99,7 +99,7 @@
    */
    async tokenInvalid() {
      await UserManager.delUser();
-     appState.updateLogin(false);
+     globalState.updateLogin(false);
    }
 
    // 渲染具体内容
@@ -115,7 +115,7 @@
        return (
          <StatusBar
            translucent
-           barStyle={appState.barStyle}
+           barStyle={globalState.barStyle}
          />
        );
      }

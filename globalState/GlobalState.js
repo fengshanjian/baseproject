@@ -1,15 +1,15 @@
 /**
  * @Author: will
  * @Date:   2017-05-26T11:40:24+08:00
- * @Filename: AppState.js
- * @Last modified by:   will
- * @Last modified time: 2017-07-05T10:03:05+08:00
+ * @Filename: GlobalState.js
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-18T14:33:01+08:00
  */
 
 
  import { observable, action } from 'mobx';
 
- class AppState {
+ class GlobalState {
    @observable
    login = false;
    @observable
@@ -24,6 +24,6 @@
      }
    }
  }
- const appState = new AppState();
+ const globalState = new GlobalState();
 
- export default appState;
+ export default globalState;

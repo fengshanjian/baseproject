@@ -2,8 +2,8 @@
  * @Author: will
  * @Date:   2017-08-07T20:28:14+08:00
  * @Filename: Tab.js
- * @Last modified by:   will
- * @Last modified time: 2017-08-07T20:31:08+08:00
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-18T14:34:13+08:00
  */
 
 
@@ -14,7 +14,7 @@
    StyleSheet,
  } from 'react-native';
  import { observer } from 'mobx-react/native';
- import appState from '../mobx/AppState';
+ import globalState from '../globalState/GlobalState';
 
  @observer
  export default class Tab extends PureComponent {
@@ -25,7 +25,7 @@
      const { children } = this.props;
      return (
        <View style={styles.container}>
-         {appState.login && children ? children : null}
+         {globalState.login && children ? children : null}
        </View>
      );
    }

@@ -2,8 +2,8 @@
 * @Author: will
 * @Date:   2017-03-26T13:18:07+08:00
 * @Filename: LoginPage.js
-* @Last modified by:   will
- * @Last modified time: 2017-08-07T21:04:44+08:00
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-18T14:32:53+08:00
 * @flow weak
 */
 
@@ -30,7 +30,7 @@
  import UserManager from '../../common/UserManager';
  import appColor from '../../common/appColor';
  import appFont from '../../common/appFont';
- import appState from '../../mobx/AppState';
+ import globalState from '../../globalState/GlobalState';
  import appConfig from '../../config/appConfig';
  import {
    WINDOW_WIDTH,
@@ -81,7 +81,7 @@
      if (global.pushToken === undefined) {
        global.pushToken = await AsyncStorage.getItem('push_token');
      }
-     appState.barStyle = 'default';
+     globalState.barStyle = 'default';
    }
 
    form= new LoginForm();
@@ -103,7 +103,7 @@
      this.form.loading = true;
      this.timer = setTimeout(() => {
        if (appConfig.IS_TEST) {
-         appState.updateLogin(true);
+         globalState.updateLogin(true);
          Toast.success('登录成功');
          goBack('MainApp');
          // 如果是Tab模式的后面需要加一句
@@ -121,7 +121,7 @@
        if (response.recode === 200) {
          response.data.userInfo.token = response.data.sessionId;
          UserManager.saveUser(response.data.userInfo);
-         appState.updateLogin(true);
+         globalState.updateLogin(true);
          Toast.success('登录成功');
          goBack('MainApp');
          // 如果是Tab模式的后面需要加一句

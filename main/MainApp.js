@@ -2,8 +2,8 @@
  * @Author: will
  * @Date:   2017-05-25T11:32:33+08:00
  * @Filename: MainApp.js
- * @Last modified by:   will
- * @Last modified time: 2017-08-07T20:52:30+08:00
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-18T14:33:34+08:00
  */
 
 
@@ -25,7 +25,7 @@ import SplashScreen from 'react-native-splash-screen';
 import appConfig from '../config/appConfig';
 import PushCenter from '../common/PushCenter';
 import HomePage from '../component/homepage/HomePage';
-import appState from '../mobx/AppState';
+import globalState from '../globalState/GlobalState';
 import UserManager from '../common/UserManager';
 import StackOptions from '../common/StackOptions';
 import LoginPage from '../component/loginpage/LoginPage';
@@ -49,24 +49,24 @@ export default class MainApp extends PureComponent {
       global.isConnected = isConnected;
     });
     NetInfo.isConnected.addEventListener(
-    'change',
-    self.handleNetInfoChange,
-  );
+      'change',
+      self.handleNetInfoChange,
+    );
     DeviceEventEmitter.addListener('tokenInvalid', this.tokenInvalid.bind(this));
   }
   async componentDidMount() {
     if (appConfig.APP_SPLASH) {
       this.timer = setTimeout(
-      () => {
-        SplashScreen.hide();
-      },
-      appConfig.SPLASH_TIME * 1000,
-    );
+        () => {
+          SplashScreen.hide();
+        },
+        appConfig.SPLASH_TIME * 1000,
+      );
     }
 
     const user = await UserManager.getUser();
     if (user) {
-      appState.updateLogin(true);
+      globalState.updateLogin(true);
     } else {
       this.props.navigation.navigate('LoginPage');
     }
@@ -76,8 +76,8 @@ export default class MainApp extends PureComponent {
     const self = this;
     this.timer && clearTimeout(this.timer);
     NetInfo.removeEventListener(
-       'change',
-       self.handleNetInfoChange,
+      'change',
+      self.handleNetInfoChange,
     );
     DeviceEventEmitter.removeAllListeners();
   }
@@ -95,7 +95,7 @@ export default class MainApp extends PureComponent {
   */
   async tokenInvalid() {
     await UserManager.delUser();
-    appState.updateLogin(false);
+    globalState.updateLogin(false);
     this.props.navigation.navigate('LoginPage');
   }
 
@@ -113,7 +113,7 @@ export default class MainApp extends PureComponent {
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
         <StatusBar
           translucent
-          barStyle={appState.barStyle} // default,light-content
+          barStyle={globalState.barStyle} // default,light-content
         />
         <PushCenter />
         {this._renderContent()}
