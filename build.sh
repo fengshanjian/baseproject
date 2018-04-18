@@ -22,9 +22,10 @@ else
     npm install --save react-native-device-info
     react-native link react-native-device-info
     npm install react-navigation --save
+    npm install --save teaset
+    npm install --save react-native-elements
     npm install react-native-animatable --save
     npm i react-native-vector-icons --save && react-native link react-native-vector-icons
-    npm i react-native-komect-uikit --save
     npm install babel-plugin-transform-decorators-legacy --save-dev
     # 使 eslint 支持 AirBnb 编码规范和ES7 编码规范,
     export PKG=eslint-config-airbnb;
