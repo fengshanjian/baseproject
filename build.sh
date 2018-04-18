@@ -20,19 +20,17 @@ else
     npm install mobx-react --save
     npm install mobx-form-validate --save
     npm install --save react-native-device-info
-    react-native link react-native-device-info
     npm install react-navigation --save
     npm install --save teaset
     npm install --save react-native-elements
     npm install react-native-animatable --save
-    npm i react-native-vector-icons --save && react-native link react-native-vector-icons
+    npm i react-native-vector-icons --save 
     npm install babel-plugin-transform-decorators-legacy --save-dev
     # 使 eslint 支持 AirBnb 编码规范和ES7 编码规范,
     export PKG=eslint-config-airbnb;
     npm info "$PKG" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG"
     npm install babel-eslint --save-dev
     npm install react-native-splash-screen --save
-    react-native link react-native-splash-screen
     git clone https://github.com/fengshanjian/create-react-native-project.git
     mv create-react-native-project src
     cd src
@@ -84,4 +82,5 @@ else
     mv ../android/app/build.gradle.tmp ../android/app/build.gradle
     mkdir ../ios/bundle
     mkdir ../android/app/src/main/assets/
+    react-native link
 fi
