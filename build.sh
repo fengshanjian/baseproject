@@ -42,7 +42,7 @@ else
     mv others/.editorconfig ../
     mv others/.eslintrc ../
     mv others/.gitignore ../
-    echo "AppRegistry.registerComponent('$1', () => RootApp);" >>others/index.js
+    echo "AppRegistry.registerComponent('Demo', () => App);" >>others/index.js
     mv others/index.js ../
     mv others/layout ../android/app/src/main/res/
     mv others/drawable-xxhdpi ../android/app/src/main/res/
