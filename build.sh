@@ -84,4 +84,5 @@ else
     mkdir ../android/app/src/main/assets/
     cd ..
     react-native link
+    rm App.js
 fi
