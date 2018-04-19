@@ -2,8 +2,8 @@
  * @Author: will
  * @Date:   2017-05-25T19:57:05+08:00
  * @Filename: HomePage.js
- * @Last modified by:   will
- * @Last modified time: 2017-06-15T10:24:48+08:00
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-19T10:12:01+08:00
  */
 
 
@@ -14,12 +14,18 @@ import {
   StyleSheet,
   Button,
 } from 'react-native';
-
+import PropTypes from 'prop-types';
+import StackOptions from '../../../common/StackOptions';
 
 export default class HomePage extends PureComponent {
   static propTypes = {
-    navigation: React.PropTypes.any,
+    navigation: PropTypes.any,
   }
+  static navigationOptions = ({ navigation }) => ({
+    ...StackOptions(navigation),
+    headerTitle: '主页',
+    headerLeft: null,
+  })
   render() {
     const { navigate } = this.props.navigation;
     return (

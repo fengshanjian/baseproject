@@ -2,8 +2,8 @@
  * @Author: will
  * @Date:   2017-06-15T09:59:20+08:00
  * @Filename: NaviIcon.js
- * @Last modified by:   will
- * @Last modified time: 2017-06-30T16:08:38+08:00
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-19T10:19:10+08:00
  */
 
 
@@ -13,11 +13,12 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default class NaviIcon extends PureComponent {
   static propTypes = {
-    onPress: React.PropTypes.func,
-    image: React.PropTypes.any,
+    onPress: PropTypes.func,
+    image: PropTypes.any,
   }
   render() {
     return (

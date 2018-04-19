@@ -1,19 +1,17 @@
 /**
  * @Author: will
  * @Date:   2017-05-31T09:02:47+08:00
- * @Filename: Tabs.js
- * @Last modified by:   will
- * @Last modified time: 2017-07-12T14:09:19+08:00
+ * @Filename: TabScreen.js
+ * @Last modified by:   smartrabbit
+ * @Last modified time: 2018-04-18T19:14:07+08:00
  */
 
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import {
-  Platform,
-} from 'react-native';
+import { Platform } from 'react-native';
 import TabOptions from '../common/TabOptions';
-import MainTab from '../tabs/MainTab';
-import SecondTab from '../tabs/SecondTab';
+import MainTab from '../screen/tabs/MainTab';
+import SecondTab from '../screen/tabs/SecondTab';
 
 const Tabs = TabNavigator(
   {
@@ -45,6 +43,7 @@ const Tabs = TabNavigator(
     swipeEnabled: false, // android
     animationEnabled: false, // android
     backBehavior: 'none',
-  });
+  },
+);
 
 export default Tabs;
