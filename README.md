@@ -19,6 +19,7 @@
 
 ##使用方法
 
+
 1、下载工程里面的build.sh放置到工作空间
 
 ```js
@@ -72,6 +73,9 @@ sh build.sh android
 自动完成ios与android的打包，ios需要手动添加文件到工程
 
 ##使用详解
+
+###选择根导航模式
+
 1、使用Stack栈导航为home
 
 ```
@@ -111,6 +115,9 @@ AppStack.js
 }
 ...
 ```
+###组件使用
+1、该工程集成了```react-native-elements```, 所以工程的UI组件尽可能的使用该组件库的组件，其次是为系统组件
 
+2、工程中同时集成了```teaset```组件库，如果组件在```react-native-elements```找不到，可参考该库（例如```Toast```组件），工程中的common文件夹中的```Loader```也是基于```Toast```实现的
 
-
+3、

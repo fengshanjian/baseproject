@@ -3,7 +3,7 @@
  * @Date:   2017-05-31T11:48:18+08:00
  * @Filename: SecondTab.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-19T16:52:25+08:00
+ * @Last modified time: 2018-05-03T15:18:54+08:00
  */
 
 
@@ -14,7 +14,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import StackOptions from '../../common/StackOptions';
 import TabOptions from '../../common/TabOptions';
 
 
@@ -23,10 +22,8 @@ export default class SecondTab extends PureComponent {
      const normalImage = require('../../../resource/image/demo/contacts_diable.png');
      const selectedImage = require('../../../resource/image/demo/contacts.png');
      return {
-       ...StackOptions(navigation),
        ...TabOptions(navigation, normalImage, selectedImage, '通讯录'),
        headerTitle: '通讯录',
-       headerLeft: null,
      };
    }
 

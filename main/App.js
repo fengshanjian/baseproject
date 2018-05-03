@@ -3,7 +3,7 @@
  * @Date:   2018-04-18T17:26:01+08:00
  * @Filename: App.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-05-03T10:54:59+08:00
+ * @Last modified time: 2018-05-03T15:39:45+08:00
  */
 
 
@@ -23,15 +23,14 @@ export default class App extends Component {
     appConfig.baseUrl();// 配置分离获取服务器地址
     this.addNetStateListener();
     // splash页面展示
-    if (appConfig.APP_SPLASH) {
-      this.timer = setTimeout(
-        () => {
-          SplashScreen.hide();
-        },
-        appConfig.SPLASH_TIME * 1000,
-      );
-    }
+    this.timer = setTimeout(
+      () => {
+        SplashScreen.hide();
+      },
+      appConfig.SPLASH_TIME * 1000,
+    );
   }
+
   componentWillUnmount() {
     const self = this;
     NetInfo.removeEventListener(

@@ -3,7 +3,7 @@
  * @Date:   2017-05-26T14:36:06+08:00
  * @Filename: ChildPage.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-20T17:22:42+08:00
+ * @Last modified time: 2018-05-03T15:19:09+08:00
  */
 
 
@@ -13,7 +13,6 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import StackOptions from '../../../common/StackOptions';
 
 export default class ChildPage extends PureComponent {
   static navigationOptions = {

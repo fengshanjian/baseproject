@@ -3,7 +3,7 @@
  * @Date:   2018-04-18T16:16:07+08:00
  * @Filename: AppSwitch.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-05-03T11:17:20+08:00
+ * @Last modified time: 2018-05-03T15:18:03+08:00
  */
 
 
@@ -17,7 +17,7 @@ import AppDraw from './AppDraw';
 export default SwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
-    MainApp: AppDraw,
+    MainApp: AppStack,
     Auth: LoginPage,
   },
   {

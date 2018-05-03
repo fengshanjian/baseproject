@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T11:34:03+08:00
  * @Filename: AppStack.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-05-03T11:21:02+08:00
+ * @Last modified time: 2018-05-03T15:18:22+08:00
  */
 
 /* eslint-disable new-cap */
@@ -17,8 +17,8 @@ import AppTab from './AppTab';
 import ChildPage from '../screen/pages/childpage/ChildPage';
 
 const AppStack = StackNavigator({
-  HomePage: { screen: HomePage },
-  // AppTab: { screen: AppTab, navigationOptions: { headerLeft: null, headerRight: null } },
+  // HomePage: { screen: HomePage },
+  AppTab: { screen: AppTab, navigationOptions: { headerLeft: null, headerRight: null } },
   ChildPage: { screen: ChildPage },
 }, {
   mode: 'card',

@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T19:57:05+08:00
  * @Filename: HomePage.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-05-03T11:54:03+08:00
+ * @Last modified time: 2018-05-03T15:19:16+08:00
  */
 
 
@@ -18,7 +18,6 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
-import StackOptions from '../../../common/StackOptions';
 
 export default class HomePage extends PureComponent {
   static propTypes = {
