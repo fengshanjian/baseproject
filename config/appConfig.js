@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T15:36:26+08:00
  * @Filename: appConfig.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-05-03T15:39:30+08:00
+ * @Last modified time: 2018-05-03T15:47:58+08:00
  */
 
 import { NativeModules } from 'react-native';
@@ -21,6 +21,5 @@ module.exports = {
   baseUrl,
   IS_TEST,
   REQUEST_TIME,
-  APP_SPLASH,
   SPLASH_TIME,
 };

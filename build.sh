@@ -45,6 +45,7 @@ else
     echo "AppRegistry.registerComponent('$1', () => App);" >>others/index.js
     mv others/index.js ../
     mv others/layout ../android/app/src/main/res/
+    mv others/colors.xml ../android/app/src/main/res/values/
     mv others/drawable-xxhdpi ../android/app/src/main/res/
     mv others/drawable-xhdpi ../android/app/src/main/res/
     mv others/LaunchImage.launchimage ../ios/$1/Images.xcassets/
