@@ -71,6 +71,46 @@ sh build.sh android
 
 自动完成ios与android的打包，ios需要手动添加文件到工程
 
+##使用详解
+1、使用Stack栈导航为home
+
+```
+AppSwitch.js
+
+SwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    MainApp: AppStack,
+    Auth: LoginPage,
+  }
+  ...
+```
+
+2、使用Tab导航为home
+
+```
+AppSwitch.js
+
+SwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    MainApp: AppDraw,
+    Auth: LoginPage,
+  }
+  ...
+```
+
+3、使用Draw抽屉导航为home
+
+```
+AppStack.js
+
+ StackNavigator({
+  AppTab: { screen: AppTab, navigationOptions: { headerLeft: null, headerRight: null } },
+  ChildPage: { screen: ChildPage },
+}
+...
+```
 
 
 
