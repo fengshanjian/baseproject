@@ -74,7 +74,15 @@ sh build.sh android
 
 ##使用详解
 
-###选择根导航模式
+###1、选择根导航模式
+
+```SwitchNavigator```为App的主入口导航器(建议先去了解下SwitchNavigator的操作流程)
+
+```AuthLoading```为鉴权等待页面
+
+```Auth```为鉴权页面(如果鉴权页面为多个页面，则需该项为Stack导航器对象)
+
+```MainApp```为用户登录后的所有页面
 
 1、使用Stack栈导航为home
 
@@ -115,9 +123,31 @@ AppStack.js
 }
 ...
 ```
-###组件使用
+###2、组件使用
 1、该工程集成了```react-native-elements```, 所以工程的UI组件尽可能的使用该组件库的组件，其次是为系统组件
 
 2、工程中同时集成了```teaset```组件库，如果组件在```react-native-elements```找不到，可参考该库（例如```Toast```组件），工程中的common文件夹中的```Loader```也是基于```Toast```实现的
 
-3、
+3、工程集成了```react-native-vector-icons```，所以很多图标都可以直接使用矢量图标，省去一些美工成本
+
+###3、工程目录
+1、```main```目录
+
+   该目录是App的入口，以及存放各种导航器
+   
+2、```common```目录
+
+   该目录存放一些常量以及通用型Api
+    
+3、```config```目录
+
+   该目录存放app的各种配置型变量的文件
+   
+4、```http```目录
+   
+   网络请求
+   
+5、```screen```目录
+
+   各个页面
+   
