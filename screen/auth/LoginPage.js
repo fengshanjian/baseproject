@@ -3,7 +3,7 @@
  * @Date:   2018-04-18T16:46:26+08:00
  * @Filename: LoginPage.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-19T14:24:33+08:00
+ * @Last modified time: 2018-04-20T15:53:18+08:00
  */
 
 
@@ -31,21 +31,27 @@ export default class LoginPage extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <Text h4>
+        <Text h4 style={{ marginTop: 100 }}>
           {'登录'}
         </Text>
         <Input
-          style={{ marginTop: 20 }}
+          containerStyle={{
+            marginTop: 30, borderColor: '#000', borderWidth: 0.5, borderRadius: 10,
+          }}
+          inputContainerStyle={{ borderBottomWidth: 0 }}
           placeholder="用户名"
           leftIcon={<Icon name="user" size={24} color="black" />}
         />
         <Input
-          style={{ marginTop: 20 }}
+          containerStyle={{
+            marginTop: 30, borderColor: '#000', borderWidth: 0.5, borderRadius: 10,
+          }}
           placeholder="密码"
+          inputContainerStyle={{ borderBottomWidth: 0 }}
           leftIcon={<Icon name="lock" size={24} color="black" />}
         />
         <Button
-          style={{ marginTop: 30 }}
+          containerStyle={{ marginTop: 50, width: 280, height: 50 }}
           title="登录"
           onPress={this.loginClick}
         />
@@ -59,6 +65,5 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
   },
 });

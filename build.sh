@@ -51,8 +51,8 @@ else
     sed  "s/@TestProject/$1/g"  others/AppDelegate.m > others/AppDelegate.m.tmp
     mv others/AppDelegate.m.tmp others/AppDelegate.m
     mv others/AppDelegate.m ../ios/$1/
-    mv others/CustomApi.h ../ios/$1/
-    mv others/CustomApi.m ../ios/$1/
+    mv others/CommonApi.h ../ios/$1/
+    mv others/CommonApi.m ../ios/$1/
 
     sed  "s/@TestProject/$1/g"  others/app.json > others/app.json.tmp
     mv others/app.json.tmp others/app.json
@@ -69,9 +69,9 @@ else
     mv others/ExtensionPackage.java.tmp others/ExtensionPackage.java
     mv others/ExtensionPackage.java ../android/app/src/main/java/com/$projectName/
 
-    sed  "s/com.testproject;/com.$projectName;/g"  others/CustomApi.java > others/CustomApi.java.tmp
-    mv others/CustomApi.java.tmp others/CustomApi.java
-    mv others/CustomApi.java ../android/app/src/main/java/com/$projectName/
+    sed  "s/com.testproject;/com.$projectName;/g"  others/CommonApi.java > others/CommonApi.java.tmp
+    mv others/CommonApi.java.tmp others/CommonApi.java
+    mv others/CommonApi.java ../android/app/src/main/java/com/$projectName/
 
     sed  "s/com.testproject;/com.$projectName;/g"  others/MainApplication.java > others/MainApplication.java.tmp
     mv others/MainApplication.java.tmp others/MainApplication.java

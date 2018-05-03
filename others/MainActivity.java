@@ -2,7 +2,7 @@ package com.testproject;
 
 import android.os.Bundle;
 
-import com.cboy.rn.splashscreen.SplashScreen;
+import org.devio.rn.splashscreen.SplashScreen;
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {

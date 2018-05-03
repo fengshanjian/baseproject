@@ -1,4 +1,4 @@
-package com.testproject;
+package com.exampleapp;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -21,13 +21,13 @@ import java.util.List;
  * @Description
  * @date 2017/6/14 下午4:10
  */
-public class CustomApi extends ReactContextBaseJavaModule {
+public class CommonApi extends ReactContextBaseJavaModule {
 
     private static ReactApplicationContext reactContext;
     private final static String CUSTOM_PUSH_TOKEN = "PushToken";
     private final static String CUSTOM_PUSH_BODY = "PushBody";
 
-    public CustomApi(ReactApplicationContext reactContext) {
+    public CommonApi(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }

@@ -3,7 +3,7 @@
  * @Date:   2018-04-18T17:28:23+08:00
  * @Filename: NavigationService.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-18T17:28:36+08:00
+ * @Last modified time: 2018-04-20T14:59:38+08:00
  */
 
 import { NavigationActions } from 'react-navigation';

@@ -3,24 +3,27 @@
  * @Date:   2017-05-26T17:25:24+08:00
  * @Filename: StackOptions.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-19T14:49:21+08:00
+ * @Last modified time: 2018-04-20T17:01:43+08:00
  */
 
 
 import React from 'react';
 import Icon from 'react-native-vector-icons/Entypo';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 import appColor from '../common/appColor';
 
 
 const StackOptions = navigation => ({
   headerBackTitle: null,
   gesturesEnabled: true,
-  headerTitleStyle: {
+  headerTitleStyle: Platform.OS === 'ios' ? {
+    color: '#fff',
+  } : {
     color: '#fff',
     textAlign: 'center',
-    alignSelf: 'center',
-    fontSize: 18,
+    position: 'absolute',
+    left: 0,
+    right: 0,
   },
   headerStyle: {
     backgroundColor: appColor.naviBar,

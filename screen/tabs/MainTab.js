@@ -3,7 +3,7 @@
  * @Date:   2017-05-31T11:47:22+08:00
  * @Filename: MainTab.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-18T18:51:58+08:00
+ * @Last modified time: 2018-05-02T14:05:53+08:00
  */
 
 
@@ -12,22 +12,21 @@ import {
   View,
   Text,
   Button,
+  StatusBar,
+  StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import StackOptions from '../../common/StackOptions';
 import TabOptions from '../../common/TabOptions';
 
 
- @observer
 export default class MainApp extends PureComponent {
    static propTypes = {
      navigation: PropTypes.any,
    }
    static navigationOptions = ({ navigation }) => {
-     const normalImage = require('../../resource/image/demo/main_disable.png');
-     const selectedImage = require('../../resource/image/demo/main.png');
+     const normalImage = require('../../../resource/image/demo/main_disable.png');
+     const selectedImage = require('../../../resource/image/demo/main.png');
      return {
-       ...StackOptions(navigation),
        ...TabOptions(navigation, normalImage, selectedImage, '主页'),
        headerTitle: '主页',
        headerLeft: null,
@@ -39,6 +38,9 @@ export default class MainApp extends PureComponent {
      const { navigate } = this.props.navigation;
      return (
        <View style={styles.container}>
+         <StatusBar
+           barStyle="light-content"
+         />
          <Text style={{ marginBottom: 20 }}>
            这是第一个Tab
          </Text>
@@ -49,7 +51,7 @@ export default class MainApp extends PureComponent {
        </View>
      );
    }
- }
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

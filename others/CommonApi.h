@@ -1,5 +1,5 @@
 //
-//  CustomApi.h
+//  CommonApi.h
 //  TestProject
 //
 //  Created by SmartRabbit on 2017/6/15.
@@ -10,15 +10,13 @@
 
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventDispatcher.h>
+#import <React/RCTEventEmitter.h>
 
-@interface CustomApi : NSObject<RCTBridgeModule>
+@interface CommonApi : RCTEventEmitter<RCTBridgeModule>
 
-+ (CustomApi *) customApi;
++ (CommonApi *) commonApi;
 
-- (void)sendEvent:(NSString *)name body:(id)body;
+//- (void)sendEvent:(NSString *)name body:(id)body;
 
-- (void)sendPushToken:(NSString *)pushToken;
-
-- (void)sendPushBody:(NSDictionary *)pushBody;
 
 @end

@@ -3,7 +3,7 @@
  * @Date:   2017-05-25T19:57:05+08:00
  * @Filename: HomePage.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-19T10:12:01+08:00
+ * @Last modified time: 2018-05-03T11:54:03+08:00
  */
 
 
@@ -13,23 +13,39 @@ import {
   Text,
   StyleSheet,
   Button,
+  StatusBar,
+  TouchableOpacity,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/Feather';
 import StackOptions from '../../../common/StackOptions';
 
 export default class HomePage extends PureComponent {
   static propTypes = {
     navigation: PropTypes.any,
   }
-  static navigationOptions = ({ navigation }) => ({
-    ...StackOptions(navigation),
-    headerTitle: '主页',
-    headerLeft: null,
+  static navigationOptions =({ navigation }) => ({
+    title: '主页',
+    headerLeft: (
+      <TouchableOpacity
+        onPress={() => { navigation.navigate('DrawerToggle'); }}
+        style={{ marginLeft: 10, height: 25, width: 30 }}
+      >
+        <Icon
+          name="list"
+          size={24}
+          color="white"
+        />
+      </TouchableOpacity>
+    ),
   })
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <StatusBar
+          barStyle="light-content"
+        />
         <Text style={{ marginBottom: 20 }}>
           这是主页
         </Text>

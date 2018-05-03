@@ -1,20 +1,20 @@
 //
-//  CustomApi.m
+//  CommonApi.m
 //  TestProject
 //
 //  Created by SmartRabbit on 2017/6/15.
 //  Copyright © 2017年 Facebook. All rights reserved.
 //
 
-#import "CustomApi.h"
+#import "CommonApi.h"
 
 
 #define CUSTOM_PUSH_TOKEN @"PushToken"
 #define CUSTOM_PUSH_BODY @"PushBody"
 
-static CustomApi *_customApi = nil;
+static CommonApi *_commonApi = nil;
 
-@implementation CustomApi
+@implementation CommonApi
 
 @synthesize bridge=_bridge;
 RCT_EXPORT_MODULE();
@@ -22,13 +22,17 @@ RCT_EXPORT_MODULE();
 -(instancetype)init{
   self = [super init];
   if(self){
-    _customApi = self;
+    _commonApi = self;
+    
   }
   return self;
 }
-
-+ (CustomApi *) customApi{
-  return _customApi;
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;
+}
++ (CommonApi *) commonApi{
+  return _commonApi;
 }
 
 
@@ -63,21 +67,33 @@ RCT_EXPORT_METHOD(loadWechat){
 }
 
 
-/**
- * 使用方法[[CustomApi customApi] sendPushToken:@""];
- */
-- (void)sendPushToken:(NSString *)pushToken{
-  [self sendEvent:CUSTOM_PUSH_TOKEN body:pushToken];
-}
-/**
- * 使用方法[[CustomApi customApi] sendPushBody:];
- */
-- (void)sendPushBody:(NSDictionary *)pushBody{
-  [self sendEvent:CUSTOM_PUSH_BODY body:pushBody];
+
+
+RCT_EXPORT_METHOD(getHost:(RCTResponseSenderBlock)callback){
+  NSString *url = @"";
+#if DEBUG
+  url = @"debugHost";
+
+#else
+  url = @"releaseHost";
+
+#endif
+  callback(@[url]);
 }
 
--(void)sendEvent:(NSString *)name body:(NSMutableDictionary *)body {
-  [self.bridge.eventDispatcher sendAppEventWithName:name body:body];
+
+- (NSArray<NSString *> *)supportedEvents
+{
+  return @[CUSTOM_PUSH_TOKEN,CUSTOM_PUSH_BODY];//有几个就写几个
+}
+
+/**
+ 测试
+ 给js发送消息
+ */
+
+-(void)test{
+  [self sendEventWithName:CUSTOM_PUSH_TOKEN body:@{@"token":@"2455412efd"}];
 }
 
 @end

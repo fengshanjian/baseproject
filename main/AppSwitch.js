@@ -1,9 +1,9 @@
 /**
  * @Author: smartrabbit
  * @Date:   2018-04-18T16:16:07+08:00
- * @Filename: AppRoot.js
+ * @Filename: AppSwitch.js
  * @Last modified by:   smartrabbit
- * @Last modified time: 2018-04-19T10:32:51+08:00
+ * @Last modified time: 2018-05-03T11:17:20+08:00
  */
 
 
@@ -11,13 +11,13 @@ import React, { Component } from 'react';
 import { SwitchNavigator } from 'react-navigation';
 import AuthLoadingScreen from '../screen/auth/AuthLoadingScreen';
 import LoginPage from '../screen/auth/LoginPage';
-import AppScreens from './AppScreens';
-
+import AppStack from './AppStack';
+import AppDraw from './AppDraw';
 
 export default SwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
-    MainApp: AppScreens,
+    MainApp: AppDraw,
     Auth: LoginPage,
   },
   {
