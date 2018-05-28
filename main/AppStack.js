@@ -27,7 +27,7 @@ const AppStack = StackNavigator({
   navigationOptions: ({ navigation }) => ({
     headerBackTitle: null,
     gesturesEnabled: true,
-    headerTitleStyle: Platform.os === 'ios' ? {
+    headerTitleStyle: Platform.OS === 'ios' ? {
       color: '#fff',
     } : {
       color: '#fff',
@@ -51,7 +51,7 @@ const AppStack = StackNavigator({
         />
       </TouchableOpacity>
     ),
-    headerRight: Platform.os === 'ios' ? null : <View />,
+    headerRight: Platform.OS === 'ios' ? null : <View />,
   }),
 });
 
