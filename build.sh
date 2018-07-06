@@ -18,7 +18,6 @@ else
     cd $1
     npm install mobx --save
     npm install mobx-react --save
-    npm install mobx-form-validate --save
     npm install --save react-native-device-info
     npm install react-navigation --save
     npm install --save teaset
